@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # nb-site-dev
 =======
 <p align="center">
@@ -51,3 +52,8 @@ Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
 
 [<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
 >>>>>>> 0b83548 (Initial commit from gatsby)
+=======
+# Niklas Buhl Personal Website
+
+🚧🚧 Under Cons🏗️ruction 🚧🚧 / 💻☕️
+>>>>>>> 168c74d (deploy)
