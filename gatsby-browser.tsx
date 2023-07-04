@@ -1,6 +1,6 @@
 import React from "react"
 import EventProvider from "./src/contexts/event.context"
 
-export const wrapPageElement = ({ element }) => {
+export const wrapRootElement = ({ element }) => {
 	return <EventProvider>{element}</EventProvider>
 }

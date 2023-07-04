@@ -128,6 +128,8 @@ const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 		handleScroll()
 		handleResize()
 
+		console.log("event context useEffect")
+
 		try {
 			window.addEventListener("resize", handleResize)
 			window.addEventListener("scroll", handleScroll)
