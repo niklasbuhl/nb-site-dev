@@ -1,6 +1,7 @@
 import { PageProps } from "gatsby"
 import { GlobalStyles } from "../styles/globalStyles"
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { EventContext } from "../contexts/event.context"
 
 interface IPage {
 	children: React.ReactNode
@@ -8,10 +9,15 @@ interface IPage {
 }
 
 const PageLayout: React.FC<IPage> = ({ children, PageProps }) => {
+	const { setLocation } = useContext(EventContext)
+
+	useEffect(() => {
+		setLocation(PageProps.location)
+	}, [])
+
 	return (
 		<React.Fragment>
 			<GlobalStyles />
-			{PageProps.location.pathname}
 			{children}
 		</React.Fragment>
 	)
