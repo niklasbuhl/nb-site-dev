@@ -1,11 +1,5 @@
 import React from "react"
-import { GlobalStyles } from "./src/styles/globalStyles"
 
 export const wrapRootElement = ({ element }) => {
-	return (
-		<React.Fragment>
-			<GlobalStyles />
-			{element}
-		</React.Fragment>
-	)
+	return <React.Fragment>{element}</React.Fragment>
 }
