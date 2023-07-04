@@ -6,8 +6,8 @@ import alingContent from "../../../styles/alignContent"
 export interface IContentWrapperDiv {
 	props: {
 		height?: string | number
-		width: string | number
-		gutter: string | number
+		width?: string | number | undefined
+		gutter?: string | number | undefined
 		display: DisplayType
 		direction?: string // default: row
 		vertical?: string // default: center
@@ -17,10 +17,20 @@ export interface IContentWrapperDiv {
 }
 
 const getCalcWidthString = (
-	width: number | string,
+	width: number | string | undefined,
 	display: DisplayType,
-	gutter: number | string
+	gutter: number | string | undefined
 ) => {
+	if (width === undefined)
+		width = getComputedStyle(document.documentElement).getPropertyValue(
+			"--page-width"
+		)
+
+	if (gutter === undefined)
+		gutter = getComputedStyle(document.documentElement).getPropertyValue(
+			"--gutter"
+		)
+
 	if (typeof gutter === "number") gutter = gutter.toString() + "px"
 
 	if (typeof width === "number") width = width + "px"

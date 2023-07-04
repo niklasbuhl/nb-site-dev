@@ -38,14 +38,8 @@ const ContentWrapper: React.FC<IContentWrapper> = ({
 
 	const props = {
 		height,
-		width: width
-			? width
-			: getComputedStyle(document.documentElement).getPropertyValue(
-					"--page-width"
-			  ),
-		gutter: gutter
-			? gutter
-			: getComputedStyle(document.documentElement).getPropertyValue("--gutter"),
+		width,
+		gutter,
 		display: display ? display : view.display,
 		direction,
 		vertical,
