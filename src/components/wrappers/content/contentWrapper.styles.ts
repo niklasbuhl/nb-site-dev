@@ -21,15 +21,17 @@ const getCalcWidthString = (
 	display: DisplayType,
 	gutter: number | string | undefined
 ) => {
-	if (width === undefined)
-		width = getComputedStyle(document.documentElement).getPropertyValue(
-			"--page-width"
-		)
+	if (typeof window !== "undefined") {
+		if (width === undefined)
+			width = getComputedStyle(document.documentElement).getPropertyValue(
+				"--page-width"
+			)
 
-	if (gutter === undefined)
-		gutter = getComputedStyle(document.documentElement).getPropertyValue(
-			"--gutter"
-		)
+		if (gutter === undefined)
+			gutter = getComputedStyle(document.documentElement).getPropertyValue(
+				"--gutter"
+			)
+	}
 
 	if (typeof gutter === "number") gutter = gutter.toString() + "px"
 
