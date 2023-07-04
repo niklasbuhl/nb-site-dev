@@ -6,7 +6,7 @@ const config: GatsbyConfig = {
 		siteUrl: `https://www.niklas.com/nb-website-dev`,
 	},
 	// Online Repo
-	pathPrefix: `/nb-website-dev`,
+	pathPrefix: `/nb-website-dev/`,
 	// More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
 	// If you use VSCode you can also use the GraphQL plugin
 	// Learn more at: https://gatsby.dev/graphql-typegen
