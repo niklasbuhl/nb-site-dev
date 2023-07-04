@@ -1,7 +1,10 @@
 import { PageProps } from "gatsby"
 import { GlobalStyles } from "../styles/globalStyles"
 import React, { useContext, useEffect } from "react"
-import EventProvider, { EventContext } from "../contexts/event.context"
+import EventContext from "../contexts/event.context"
+import NavigationBar from "../components/navigationBar/navigationBar.components"
+import HeroHeader from "../components/heroHeader/heroHeader.component"
+import MainContent from "../components/mainContent/mainContent.component"
 
 interface IPage {
 	children: React.ReactNode
@@ -18,7 +21,9 @@ const PageLayout: React.FC<IPage> = ({ children, PageProps }) => {
 	return (
 		<React.Fragment>
 			<GlobalStyles />
-			{children}
+			<HeroHeader />
+			<NavigationBar />
+			<MainContent>{children}</MainContent>
 		</React.Fragment>
 	)
 }

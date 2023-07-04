@@ -45,14 +45,13 @@ const eventDefaultState = {
 	setLocation: () => {},
 }
 
-export const EventContext =
-	React.createContext<IEventContext>(eventDefaultState)
+const EventContext = React.createContext<IEventContext>(eventDefaultState)
 
 interface IEventProvider {
 	children: React.ReactNode
 }
 
-const EventProvider: React.FC<IEventProvider> = ({ children }) => {
+export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 	const [view, setview] = useState(eventDefaultState.view)
 	const [mouse, setMouse] = useState(eventDefaultState.mouse)
 	const [lastScrollPosition, setLastScrollPosition] = useState<number>(0)
@@ -162,4 +161,4 @@ const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 	)
 }
 
-export default EventProvider
+export default EventContext

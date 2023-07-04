@@ -1,6 +1,11 @@
 import React from "react"
-import EventProvider from "./src/contexts/event.context"
+import { EventProvider } from "./src/contexts/event.context"
+import { LayoutProvider } from "./src/contexts/layout.context"
 
 export const wrapRootElement = ({ element }) => {
-	return <EventProvider>{element}</EventProvider>
+	return (
+		<EventProvider>
+			<LayoutProvider>{element}</LayoutProvider>
+		</EventProvider>
+	)
 }
