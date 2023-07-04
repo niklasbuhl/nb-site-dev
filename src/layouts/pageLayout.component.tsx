@@ -1,7 +1,7 @@
 import { PageProps } from "gatsby"
 import { GlobalStyles } from "../styles/globalStyles"
 import React, { useContext, useEffect } from "react"
-import { EventContext } from "../contexts/event.context"
+import EventProvider, { EventContext } from "../contexts/event.context"
 
 interface IPage {
 	children: React.ReactNode
