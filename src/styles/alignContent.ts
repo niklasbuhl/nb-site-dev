@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 
 interface IAlignContent {
-	direction?: string // default: row
+	direction?: string // default: column
 	vertical?: string // default: center
 	horizontal?: string // default: center
 }
@@ -10,7 +10,10 @@ const alingContent = css<IAlignContent>`
 	display: flex;
 
 	// Direction
-	${(props) => (props.direction ? "flex-direction: " + props.direction : null)}
+	${(props) =>
+		props.direction
+			? "flex-direction: " + props.direction + ";"
+			: "flex-direction: column;"}
 
 	// Horizontal
 	${(props) =>

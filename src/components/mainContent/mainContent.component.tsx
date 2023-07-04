@@ -1,10 +1,10 @@
 import React from "react"
-import PositionWrapper from "../wrappers/position/PositionWrapper.component"
+import PositionWrapper from "../wrappers/position/positionWrapper.component"
 import {
 	mainContentWrapperCSS,
 	mainPositionWrapperCSS,
 } from "./mainContent.styles"
-import ContentWrapper from "../wrappers/content/ContentWrapper.component"
+import ContentWrapper from "../wrappers/content/contentWrapper.component"
 
 interface IMain {
 	children: React.ReactNode

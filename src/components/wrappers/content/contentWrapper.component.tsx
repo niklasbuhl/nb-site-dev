@@ -1,14 +1,13 @@
 import { RuleSet } from "styled-components"
 import EventContext, { DisplayType } from "../../../contexts/event.context"
-import alingContent from "../../../styles/alignContent"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import React from "react"
 import {
 	ContentWrapperDiv,
 	ContentWrapperFooter,
 	ContentWrapperMain,
 	ContentWrapperNav,
-} from "./ContentWrapper.styles"
+} from "./contentWrapper.styles"
 
 export interface IContentWrapper {
 	height?: string | number
