@@ -8,6 +8,7 @@ const IndexPage: React.FC<PageProps> = (PageProps) => {
 	return (
 		<PageLayout PageProps={PageProps}>
 			<h1>Hello, World! 🪐</h1>
+			<p>This page is under construction, this is version 0.0.7</p>
 			<p>Window Height {view.width}</p>
 			<p>Window Width {view.height}</p>
 			<p>Window Scroll {view.scroll}</p>
