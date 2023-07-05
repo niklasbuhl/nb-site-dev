@@ -85,12 +85,11 @@ const NavigationBar: React.FC = () => {
 
 		// Instant scroll to the last position
 		if (view.display !== DisplayType.Mobile) {
+			window.scrollTo(0, view.scroll)
 			window.scrollTo({
 				top: topPosition,
 				behavior: "smooth",
 			})
-
-			window.scrollTo(0, view.scroll)
 		}
 
 		// Smoothly scroll the rest of the distance smoothly
