@@ -31,13 +31,54 @@ const NavigationBar: React.FC = () => {
 	useEffect(() => {
 		if (
 			view.scroll <= view.height / 2 + layout.getHeroHeaderHeightPixel() &&
-			(location?.pathname === "/" || location?.pathname === undefined) // undefined at first load
+			(location?.pathname === "/" || // index
+				location?.pathname === undefined || // undefined at first load
+				location?.pathname === "/nb-website-dev/") // dev site
 		) {
 			setTimeout(() => setHideTextLogo(true), 500)
 		} else {
 			setHideTextLogo(false)
 		}
 	}, [view.scroll, location?.pathname])
+
+	// Toggle hide/show the mobile menu
+	const toggleMenu = () => {
+		// Disable Scrolling when menu is shown
+		if (view.display === DisplayType.Mobile && !showMobileMenu)
+			layout.disableScroll(showMobileMenu)
+
+		if (view.scroll < layout.getHeroHeaderHeightPixel()) {
+			const topPosition = layout.getHeroHeaderHeightPixel()
+
+			window.scrollTo({
+				top: topPosition,
+				behavior: "smooth",
+			})
+		}
+
+		// Toggle Show Menu
+		setShowMobileMenu(!showMobileMenu)
+	}
+
+	// Scroll to top
+	const goToTop = () => {
+		// Instant scroll to the last position
+		window.scrollTo(0, view.scroll)
+
+		// Smoothly scroll the rest of the distance smoothly
+		window.scrollTo({
+			top: layout.getHeroHeaderHeightPixel(),
+			behavior: "smooth",
+		})
+	}
+
+	// Scroll to hero header / Contact
+	const scrollToHeroHeader = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		})
+	}
 
 	return (
 		<Nav
@@ -54,8 +95,9 @@ const NavigationBar: React.FC = () => {
 				gutter={layout.gutter}
 			>
 				<div style={{ display: "flex" }}>
-					<LogoGraphic to="/" />
+					<LogoGraphic onClick={goToTop} to="/" />
 					<LogoText
+						onClick={goToTop}
 						to="/"
 						hideTextLogo={hideTextLogo}
 						pathname={location?.pathname || ""}
@@ -64,10 +106,12 @@ const NavigationBar: React.FC = () => {
 					</LogoText>
 				</div>
 				<div style={{ display: "flex" }}>
-					<NavLink to="/projects">Projects</NavLink>
+					<NavLink onClick={goToTop} to="/projects">
+						Projects
+					</NavLink>
 					<NavLink>Writings</NavLink>
 					<NavLink>About</NavLink>
-					<NavLink>Contact</NavLink>
+					<NavLink onClick={scrollToHeroHeader}>Contact</NavLink>
 				</div>
 			</DesktopMenu>
 		</Nav>

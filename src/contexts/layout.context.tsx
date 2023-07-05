@@ -12,6 +12,7 @@ interface ILayoutContext {
 		mainTopMargin: string
 		mainBottomMargin: string
 		navigationBarHeight: string
+		disableScroll: (disable: boolean) => void
 	}
 }
 
@@ -28,6 +29,7 @@ const layoutDefaultState: ILayoutContext = {
 		mainTopMargin: "-48px",
 		mainBottomMargin: "-48px",
 		navigationBarHeight: "48px",
+		disableScroll: () => {},
 	},
 }
 
@@ -82,6 +84,14 @@ export const LayoutProvider: React.FC<ILayoutProvider> = ({ children }) => {
 		else setHeroHeaderHeightCSS(height.toString() + "px")
 	}
 
+	const disableScroll = (disable: boolean) => {
+		if (disable) {
+			document.documentElement.style.setProperty("--disable-scroll", "hidden")
+		} else {
+			document.documentElement.style.setProperty("--disable-scroll", "visible")
+		}
+	}
+
 	const layout = {
 		heroHeaderHeight,
 		getHeroHeaderHeightPixel,
@@ -92,6 +102,7 @@ export const LayoutProvider: React.FC<ILayoutProvider> = ({ children }) => {
 		mainTopMargin,
 		mainBottomMargin,
 		navigationBarHeight,
+		disableScroll,
 	}
 
 	return (
