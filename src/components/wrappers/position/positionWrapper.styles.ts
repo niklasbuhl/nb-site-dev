@@ -4,7 +4,9 @@ export interface IPositionWrapperDiv {
 	sticky?: string
 	background?: string
 	zIndex?: number
-	addCSS?: RuleSet
+	topMargin?: string
+	bottomMargin?: string
+	$addCSS?: RuleSet | string
 	// display?: DisplayType
 }
 
@@ -25,8 +27,13 @@ export const PositionWrapperDiv = styled.div<IPositionWrapperDiv>`
 	${(props) => (props.background ? props.background : null)}
 
 	// Z-Index
-	z-index: ${(props) => (props.zIndex !== undefined ? props.zIndex + "px;" : 0)};
+	${(props) => (props.zIndex ? "z-index: " + props.zIndex : "")}
+
+	// Margin
+	${(props) => (props.topMargin ? "margin-top: " + props.topMargin + ";" : "")}
+	${(props) =>
+		props.bottomMargin ? "margin-bottom: " + props.bottomMargin + ";" : ""}
 
 	// Additional CSS
-	${(props) => props.addCSS}
+	${(props) => (props.$addCSS ? props.$addCSS : "")}
 `

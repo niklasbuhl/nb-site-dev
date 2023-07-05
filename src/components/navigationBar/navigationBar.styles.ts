@@ -5,7 +5,7 @@ interface INav {
 	hidden: boolean
 }
 
-export const Nav = styled.nav`
+export const Nav = styled.nav<INav>`
 	${elementStyles.pageSection}
 	position: absolute;
 	height: var(--navigation-bar-height);

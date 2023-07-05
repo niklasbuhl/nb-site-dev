@@ -11,24 +11,24 @@ const HeroHeader: React.FC = () => {
 	useEffect(() => {
 		if (
 			location?.pathname === undefined ||
-			view.scroll === layout.getHeroHeaderHeightNumber()
+			view.scroll === layout.getHeroHeaderHeightPixel()
 		) {
 			// Instant scroll to the navigationbar on refresh
-			window.scrollTo(0, layout.getHeroHeaderHeightNumber())
+			window.scrollTo(0, layout.getHeroHeaderHeightPixel())
 		} else {
 			// Instant scroll to the last position
 			window.scrollTo(0, view.scroll)
 
 			// Smoothly scroll the rest of the distance smoothly
 			window.scrollTo({
-				top: layout.getHeroHeaderHeightNumber(),
+				top: layout.getHeroHeaderHeightPixel(),
 				behavior: "smooth",
 			})
 		}
 	}, [])
 
 	return (
-		<Section>
+		<Section height={layout.heroHeaderHeight}>
 			<h1>Hero Header</h1>
 		</Section>
 	)

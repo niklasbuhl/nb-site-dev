@@ -1,18 +1,31 @@
-import React from "react"
+import React, { useContext, useState } from "react"
+import EventContext from "./event.context"
 
 interface ILayoutContext {
 	layout: {
-		getHeroHeaderHeightNumber: () => number
-		getHeroHeaderHeightCSS: () => string
+		heroHeaderHeight: string
+		getHeroHeaderHeightPixel: () => number
 		setHeroHeaderHeight: (height: string | number) => void
+		pageWidth: string
+		gutter: string
+		mainGutter: string
+		mainTopMargin: string
+		mainBottomMargin: string
 	}
 }
 
 const layoutDefaultState: ILayoutContext = {
 	layout: {
-		getHeroHeaderHeightNumber: () => 0,
-		getHeroHeaderHeightCSS: () => "",
+		heroHeaderHeight: "480px",
+		getHeroHeaderHeightPixel: () => {
+			return 0
+		},
 		setHeroHeaderHeight: () => {},
+		pageWidth: "960px",
+		gutter: "16px",
+		mainGutter: "48px",
+		mainTopMargin: "-48px",
+		mainBottomMargin: "-48px",
 	},
 }
 
@@ -23,42 +36,56 @@ interface ILayoutProvider {
 }
 
 export const LayoutProvider: React.FC<ILayoutProvider> = ({ children }) => {
-	const getHeroHeaderHeightCSS = () => {
-		const height = getComputedStyle(document.documentElement).getPropertyValue(
-			"--hero-header-height"
-		)
+	const { view } = useContext(EventContext)
 
-		return height
-	}
+	const [heroHeaderHeight, setHeroHeaderHeightCSS] = useState<string>(
+		layoutDefaultState.layout.heroHeaderHeight
+	)
+	const [pageWidth] = useState<string>(layoutDefaultState.layout.pageWidth)
+	const [gutter] = useState<string>(layoutDefaultState.layout.gutter)
+	const [mainGutter] = useState<string>(layoutDefaultState.layout.mainGutter)
+	const [mainTopMargin] = useState<string>(
+		layoutDefaultState.layout.mainTopMargin
+	)
+	const [mainBottomMargin] = useState<string>(
+		layoutDefaultState.layout.mainBottomMargin
+	)
 
-	const getHeroHeaderHeightNumber = () => {
-		const height = getComputedStyle(document.documentElement).getPropertyValue(
-			"--hero-header-height"
-		)
-
-		if (height.includes("px")) {
-			return parseInt(height, 10)
-		} else if (height.includes("vh")) {
-			const vh = window.innerHeight
-			const percentage = parseFloat(height.replace("vh", "").trim())
+	// Convert a css string to a pixel
+	const cssPixel = (value: string) => {
+		if (value.includes("px")) {
+			return parseInt(value, 10)
+		} else if (value.includes("vh")) {
+			const vh = view.height
+			const percentage = parseFloat(value.replace("vh", "").trim())
 			return (vh * percentage) / 100
+		} else if (value.includes("vw")) {
+			const vw = view.width
+			const percentage = parseFloat(value.replace("vw", "").trim())
+			return (vw * percentage) / 100
 		} else {
-			return 0
+			return parseInt(value, 10)
 		}
 	}
 
-	const setHeroHeaderHeight = (height: string | number) => {
-		if (typeof height === "number") {
-			height = height.toString() + "px"
-		}
+	const getHeroHeaderHeightPixel = () => {
+		return cssPixel(heroHeaderHeight)
+	}
 
-		document.documentElement.style.setProperty("--hero-header-height", height)
+	const setHeroHeaderHeight = (height: number | string) => {
+		if (typeof height === "string") setHeroHeaderHeightCSS(height)
+		else setHeroHeaderHeightCSS(height.toString() + "px")
 	}
 
 	const layout = {
-		getHeroHeaderHeightNumber,
-		getHeroHeaderHeightCSS,
+		heroHeaderHeight,
+		getHeroHeaderHeightPixel,
 		setHeroHeaderHeight,
+		pageWidth,
+		gutter,
+		mainGutter,
+		mainTopMargin,
+		mainBottomMargin,
 	}
 
 	return (

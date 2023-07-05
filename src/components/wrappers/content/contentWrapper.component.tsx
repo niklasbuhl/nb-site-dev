@@ -1,19 +1,22 @@
 import { RuleSet } from "styled-components"
 import EventContext, { DisplayType } from "../../../contexts/event.context"
-import { useContext } from "react"
-import React from "react"
+import { useContext, useEffect } from "react"
+import React, { useState } from "react"
 import {
 	ContentWrapperDiv,
 	ContentWrapperFooter,
 	ContentWrapperMain,
 	ContentWrapperNav,
+	IProps,
 } from "./contentWrapper.styles"
 
 export interface IContentWrapper {
-	height?: string | number
-	width?: string | number
-	gutter?: number
-	display?: DisplayType
+	height?: string
+	width?: string
+	maxWidth?: string
+	gutter?: string
+	mainGutter?: string
+	// display?: DisplayType
 	direction?: string // default: row
 	vertical?: string // default: center
 	horizontal?: string // default: center
@@ -25,8 +28,10 @@ export interface IContentWrapper {
 const ContentWrapper: React.FC<IContentWrapper> = ({
 	height,
 	width,
+	maxWidth,
 	gutter,
-	display,
+	mainGutter,
+	// display,
 	direction,
 	vertical,
 	horizontal,
@@ -34,30 +39,29 @@ const ContentWrapper: React.FC<IContentWrapper> = ({
 	type,
 	addCSS,
 }) => {
-	const { view } = useContext(EventContext)
-
-	const props = {
+	const [props, setProps] = useState<IProps>({
 		height,
 		width,
+		maxWidth,
 		gutter,
-		display: display ? display : view.display,
+		mainGutter,
 		direction,
 		vertical,
 		horizontal,
 		addCSS,
-	}
+	})
 
 	// Return based on type
 	return (
 		<>
 			{type === "nav" ? (
-				<ContentWrapperNav props={props}>{children}</ContentWrapperNav>
+				<ContentWrapperNav $props={props}>{children}</ContentWrapperNav>
 			) : type === "main" ? (
-				<ContentWrapperMain props={props}>{children}</ContentWrapperMain>
+				<ContentWrapperMain $props={props}>{children}</ContentWrapperMain>
 			) : type === "footer" ? (
-				<ContentWrapperFooter props={props}>{children}</ContentWrapperFooter>
+				<ContentWrapperFooter $props={props}>{children}</ContentWrapperFooter>
 			) : (
-				<ContentWrapperDiv props={props}>{children}</ContentWrapperDiv>
+				<ContentWrapperDiv $props={props}>{children}</ContentWrapperDiv>
 			)}
 		</>
 	)

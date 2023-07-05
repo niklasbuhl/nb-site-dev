@@ -1,45 +1,22 @@
-import FlattenSimpleInterpolation from "styled-components"
+import { RuleSet } from "styled-components"
 import styled from "styled-components"
 import { DisplayType } from "../../../contexts/event.context"
 import alingContent from "../../../styles/alignContent"
 
-export interface IContentWrapperDiv {
-	props: {
-		height?: string | number
-		width?: string | number | undefined
-		gutter?: string | number | undefined
-		display: DisplayType
-		direction?: string // default: row
-		vertical?: string // default: center
-		horizontal?: string // default: center
-		additionalCSS?: typeof FlattenSimpleInterpolation | string
-	}
+export interface IProps {
+	height?: string
+	width?: string
+	maxWidth?: string
+	gutter?: string
+	mainGutter?: string
+	direction?: string // default: column
+	vertical?: string // default: center
+	horizontal?: string // default: center
+	addCSS?: RuleSet
 }
 
-const getCalcWidthString = (
-	width: number | string | undefined,
-	display: DisplayType,
-	gutter: number | string | undefined
-) => {
-	if (typeof window !== "undefined") {
-		if (width === undefined)
-			width = getComputedStyle(document.documentElement).getPropertyValue(
-				"--page-width"
-			)
-
-		if (gutter === undefined)
-			gutter = getComputedStyle(document.documentElement).getPropertyValue(
-				"--gutter"
-			)
-	}
-
-	if (typeof gutter === "number") gutter = gutter.toString() + "px"
-
-	if (typeof width === "number") width = width + "px"
-
-	if (display !== DisplayType.Mobile) width += " - 2 * " + gutter
-
-	return width
+export interface IContentWrapperDiv {
+	$props: IProps
 }
 
 export const ContentWrapperDiv = styled.div<IContentWrapperDiv>`
@@ -47,48 +24,35 @@ export const ContentWrapperDiv = styled.div<IContentWrapperDiv>`
 	display: flex;
 
 	// Height
-	height: ${(props) =>
-		typeof props.props.height === "number"
-			? props.props.height + "px"
-			: props.props.height};
+	${(p) => (p.$props.height ? "height: " + p.$props.height + ";" : "")}
 
 	// Width
-	// use gutter on all other devices than mobile
-	width: calc(
-		${(props) =>
-			getCalcWidthString(
-				props.props.width,
-				props.props.display,
-				props.props.gutter
-			)}
-	);
+	${(p) => (p.$props.width ? "width: " + p.$props.width + ";" : "")}
 
-	// Gutter (padding)
-	${(props) =>
-		props.props.display !== DisplayType.Mobile
-			? "margin-left: " + props.props.gutter + "px;"
-			: null}
-	${(props) =>
-		props.props.display !== DisplayType.Mobile
-			? "margin-right: " + props.props.gutter + "px;"
-			: null}
+	// Max Width
+	${(p) => (p.$props.maxWidth ? "max-width: " + p.$props.maxWidth + ";" : "")}
+
+	// Gutter
+	${(p) => (p.$props.gutter ? "margin: " + p.$props.gutter + ";" : "")}
+	${(p) => (p.$props.mainGutter ? "padding-top: " + p.$props.mainGutter : "")};
+	${(p) =>
+		p.$props.mainGutter ? "padding-bottom: " + p.$props.mainGutter : ""};
 
 	// Position Content (direction, vertical, horizontal)
 	${alingContent}
 
 	// Additional CSS
-	${(props) =>
-		typeof props.props.additionalCSS === "string"
-			? props.props.additionalCSS
-			: ""}
+	${(p) => (p.$props.addCSS ? p.$props.addCSS : "")}
 `
 
 export const ContentWrapperMain = styled(ContentWrapperDiv).attrs({
 	as: "main",
-})``
+})<IContentWrapperDiv>``
+
 export const ContentWrapperNav = styled(ContentWrapperDiv).attrs({
 	as: "nav",
-})``
+})<IContentWrapperDiv>``
+
 export const ContentWrapperFooter = styled(ContentWrapperDiv).attrs({
 	as: "footer",
-})``
+})<IContentWrapperDiv>``
