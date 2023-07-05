@@ -111,7 +111,12 @@ const NavigationBar: React.FC = () => {
 					</NavLink>
 					<NavLink>Writings</NavLink>
 					<NavLink>About</NavLink>
-					<NavLink onClick={scrollToHeroHeader}>Contact</NavLink>
+					<NavLink
+						onClick={scrollToHeroHeader}
+						active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
+					>
+						Contact
+					</NavLink>
 				</div>
 			</DesktopMenu>
 		</Nav>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { StyledButton, StyledLink } from "./navLink.styles"
+import { ActiveStyle, StyledButton, StyledLink } from "./navLink.styles"
 import EventContext from "../../../contexts/event.context"
 import LayoutContext from "../../../contexts/layout.context"
 import { RuleSet, css } from "styled-components"
@@ -8,7 +8,6 @@ interface INavLink {
 	to?: string
 	onClick?: () => void
 	active?: boolean
-	activeStyle?: RuleSet
 	children: React.ReactNode
 }
 
@@ -16,12 +15,14 @@ const NavLink: React.FC<INavLink> = ({
 	children,
 	to = undefined,
 	active,
-	activeStyle,
 	onClick = undefined,
 }) => {
 	const { view } = useContext(EventContext)
 	const { layout } = useContext(LayoutContext)
-	const [activeLinkStyle, setActiveLinkStyle] = useState<RuleSet>()
+	const [activeLinkStyle, setActiveLinkStyle] = useState<object>({})
+	const activeStyle = {
+		color: "cyan",
+	}
 
 	const goToTop = () => {
 		// Instant scroll to the last position
@@ -38,7 +39,7 @@ const NavLink: React.FC<INavLink> = ({
 	useEffect(() => {
 		// Above heroheader edge
 		if (view.scroll < layout.getHeroHeaderHeightPixel() / 2) {
-			setActiveLinkStyle(undefined)
+			setActiveLinkStyle({})
 
 			// Below
 		} else {

@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import styled, { RuleSet, css } from "styled-components"
 import { headerFont } from "../../../styles/fonts"
+import { Styles } from "styled-components/dist/types"
 
 export const NavLinkWrapper = styled.div`
 	display: flex;
@@ -28,7 +29,7 @@ export const StyledLink = styled(Link)`
 
 interface IStyledButton {
 	active?: boolean
-	activeStyle?: RuleSet
+	activeStyle?: Styles<object>
 	disabled?: boolean
 }
 
@@ -36,7 +37,10 @@ export const StyledButton = styled.button<IStyledButton>`
 	${NavLinkStyle}
 	height: 48px;
 	cursor: pointer;
-	${(props) => (props.active ? props.activeStyle : "")}
+	${(props) =>
+		props.active && props.activeStyle !== undefined
+			? css(props.activeStyle)
+			: ""}
 
 	${(props) =>
 		props.disabled &&
@@ -50,4 +54,8 @@ export const DisabledLink = styled.button<IStyledButton>`
 	${NavLinkStyle}
 	height: 48px;
 	cursor: pointer;
+`
+
+export const ActiveStyle = css`
+	color: cyan;
 `
