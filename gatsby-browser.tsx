@@ -9,3 +9,7 @@ export const wrapRootElement = ({ element }) => {
 		</EventProvider>
 	)
 }
+
+export const shouldUpdateScroll = ({ routerProps: { location } }) => {
+	return false
+}

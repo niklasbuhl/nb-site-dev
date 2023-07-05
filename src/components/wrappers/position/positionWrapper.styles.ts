@@ -1,11 +1,11 @@
 import { RuleSet, styled } from "styled-components"
+import elementStyles from "../../../styles/elementStyles"
 
 export interface IPositionWrapperDiv {
 	sticky?: string
 	background?: string
 	zIndex?: number
-	topMargin?: string
-	bottomMargin?: string
+	type?: string
 	$addCSS?: RuleSet | string
 	// display?: DisplayType
 }
@@ -13,26 +13,22 @@ export interface IPositionWrapperDiv {
 export const PositionWrapperDiv = styled.div<IPositionWrapperDiv>`
 	// Display
 	display: flex;
-	justify-content: center;
-	flex-direction: row;
+	// justify-content: center;
+	align-items: center;
+	flex-direction: column;
 
-	// Position
+	// Page Section
+	${(props) => (props.type === "pageSection" ? elementStyles.pageSection : "")}
+
+	// Position (only for navigationBar or credits types)
 	${(props) =>
 		props.sticky !== undefined ? "position: sticky;" : "position: relative;"}
 
 	${(props) => (props.sticky === "top" ? "top: 0;" : null)}
 	${(props) => (props.sticky === "bottom" ? "bottom: 0;" : null)}
 
-	// Background
-	${(props) => (props.background ? props.background : null)}
-
 	// Z-Index
 	${(props) => (props.zIndex ? "z-index: " + props.zIndex : "")}
-
-	// Margin
-	${(props) => (props.topMargin ? "margin-top: " + props.topMargin + ";" : "")}
-	${(props) =>
-		props.bottomMargin ? "margin-bottom: " + props.bottomMargin + ";" : ""}
 
 	// Additional CSS
 	${(props) => (props.$addCSS ? props.$addCSS : "")}

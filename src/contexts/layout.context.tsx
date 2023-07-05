@@ -11,6 +11,7 @@ interface ILayoutContext {
 		mainGutter: string
 		mainTopMargin: string
 		mainBottomMargin: string
+		navigationBarHeight: string
 	}
 }
 
@@ -26,6 +27,7 @@ const layoutDefaultState: ILayoutContext = {
 		mainGutter: "48px",
 		mainTopMargin: "-48px",
 		mainBottomMargin: "-48px",
+		navigationBarHeight: "48px",
 	},
 }
 
@@ -49,6 +51,9 @@ export const LayoutProvider: React.FC<ILayoutProvider> = ({ children }) => {
 	)
 	const [mainBottomMargin] = useState<string>(
 		layoutDefaultState.layout.mainBottomMargin
+	)
+	const [navigationBarHeight] = useState<string>(
+		layoutDefaultState.layout.navigationBarHeight
 	)
 
 	// Convert a css string to a pixel
@@ -86,6 +91,7 @@ export const LayoutProvider: React.FC<ILayoutProvider> = ({ children }) => {
 		mainGutter,
 		mainTopMargin,
 		mainBottomMargin,
+		navigationBarHeight,
 	}
 
 	return (

@@ -8,9 +8,8 @@ export interface IPositionWrapper {
 	sticky?: string
 	background?: string
 	zIndex?: number
-	topMargin?: string
-	bottomMargin?: string
 	// display?: DisplayType
+	type?: string
 	children?: React.ReactNode
 	$addCSS?: RuleSet | string
 }
@@ -19,9 +18,8 @@ const PositionWrapper: React.FC<IPositionWrapper> = ({
 	sticky,
 	background,
 	zIndex,
+	type,
 	children,
-	topMargin,
-	bottomMargin,
 	$addCSS,
 }) => {
 	return (
@@ -29,8 +27,7 @@ const PositionWrapper: React.FC<IPositionWrapper> = ({
 			sticky={sticky}
 			background={background}
 			zIndex={zIndex}
-			topMargin={topMargin}
-			bottomMargin={bottomMargin}
+			type={type}
 			$addCSS={$addCSS}
 		>
 			{children}
