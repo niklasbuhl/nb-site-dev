@@ -5,6 +5,7 @@ import { DisplayType } from "../../contexts/event.context"
 interface INav {
 	hidden: boolean
 	height: string
+	showMobileMenu: boolean
 }
 
 export const Nav = styled.nav<INav>`
@@ -17,6 +18,7 @@ export const Nav = styled.nav<INav>`
 	animation-timing-function: ease-in;
 	transition: transform 0.2s, height 0.3s ease;
 	${(props) => (props.hidden ? `transform: translateY(-96px);` : "")}
+	${(props) => (props.showMobileMenu ? "background: white;" : "")}
 `
 
 interface IDesktopMenu {
@@ -38,4 +40,12 @@ export const DesktopMenu = styled.div<IDesktopMenu>`
 	padding-right: ${(props) =>
 		props.display === DisplayType.Mobile ? 0 : props.gutter};
 	max-width: calc(${(props) => props.width + " - " + props.gutter + " * 2"});
+`
+
+interface IMobileMenu {}
+
+export const MobileMenu = styled.div<IMobileMenu>`
+	display flex;
+	flex-direction: column;
+	width: 100%;
 `

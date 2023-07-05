@@ -24,17 +24,6 @@ const NavLink: React.FC<INavLink> = ({
 		color: "cyan",
 	}
 
-	const goToTop = () => {
-		// Instant scroll to the last position
-		window.scrollTo(0, view.scroll)
-
-		// Smoothly scroll the rest of the distance smoothly
-		window.scrollTo({
-			top: layout.getHeroHeaderHeightPixel(),
-			behavior: "smooth",
-		})
-	}
-
 	// Set active style for Links
 	useEffect(() => {
 		// Above heroheader edge
@@ -54,7 +43,7 @@ const NavLink: React.FC<INavLink> = ({
 					activeStyle={activeLinkStyle}
 					partiallyActive={true}
 					to={to}
-					onClick={goToTop}
+					onClick={onClick}
 				>
 					{children}
 				</StyledLink>
