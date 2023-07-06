@@ -27,7 +27,7 @@ const layoutDefaultState: ILayoutContext = {
 		gutter: "16px",
 		mainGutter: "48px",
 		mainTopMargin: "-48px",
-		mainBottomMargin: "-48px",
+		mainBottomMargin: "-24px",
 		navigationBarHeight: "48px",
 		disableScroll: () => {},
 	},

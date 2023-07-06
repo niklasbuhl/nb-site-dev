@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { pageSection } from "../../styles/pageSection"
+import { pageSection } from "../../styles/elementStyles"
 
 export const Section = styled.section`
 	${pageSection}
@@ -9,6 +9,5 @@ export const Section = styled.section`
 	align-items: center;
 	background-color: white;
 	position: sticky;
-	position: -webkit-sticky;
 	bottom: 0;
 `

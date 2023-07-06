@@ -1,6 +1,6 @@
 import { css } from "styled-components"
 
-const pageSection = css`
+export const pageSection = css`
 	display: flex;
 	justify-content: center;
 	width: 100%;

@@ -6,6 +6,7 @@ import NavigationBar from "../components/navigationBar/navigationBar.components"
 import HeroHeader from "../components/heroHeader/heroHeader.component"
 import MainContent from "../components/mainContent/mainContent.component"
 import LayoutContext from "../contexts/layout.context"
+import Credits from "../components/credits/credits.component"
 
 interface IPage {
 	children: React.ReactNode
@@ -31,6 +32,7 @@ const PageLayout: React.FC<IPage> = ({ children, PageProps }) => {
 			>
 				{children}
 			</MainContent>
+			<Credits />
 		</React.Fragment>
 	)
 }

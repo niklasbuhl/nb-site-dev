@@ -1,6 +1,5 @@
 import { Link } from "gatsby"
-import styled, { RuleSet, css } from "styled-components"
-import { headerFont } from "../../../styles/fonts"
+import styled, { css } from "styled-components"
 import { Styles } from "styled-components/dist/types"
 
 export const NavLinkWrapper = styled.div`
@@ -14,14 +13,6 @@ export const NavLinkStyle = css`
 	padding: 16px;
 	height: calc(100% - 32px);
 	align-items: center;
-
-	// Typography
-	// ${headerFont}
-	// text-decoration: none;
-	// font-family: Helvetica;
-	// font-weight: 700;
-	// font-size: 1rem;
-	// color: black;
 `
 
 interface IStyledLink {

@@ -6,6 +6,7 @@ interface IThemeContext {
 	typography: {
 		navigationBar: Styles<object>
 		navigationBarActive: Styles<object>
+		tech: Styles<object>
 	}
 	color: {
 		purple: Color
@@ -23,7 +24,7 @@ const colors = {
 const themeDefaultState: IThemeContext = {
 	typography: {
 		navigationBar: {
-			fontFamily: "'space-text',sans-serif",
+			fontFamily: "'space-text', sans-serif",
 			textDecoration: "none",
 			fontWeight: "500",
 			fontSize: "1rem",
@@ -31,6 +32,11 @@ const themeDefaultState: IThemeContext = {
 		},
 		navigationBarActive: {
 			color: colors.purple.hsl().string(),
+		},
+		tech: {
+			fontFamily: "'OCR-A BT', sans-serif",
+			fontWeight: "400",
+			fontSize: "0.7rem",
 		},
 	},
 	color: {
