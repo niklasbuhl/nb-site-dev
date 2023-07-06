@@ -9,25 +9,33 @@ export const NavLinkWrapper = styled.div`
 
 export const NavLinkStyle = css`
 	display: flex;
-	text-decoration: none;
 	border: none;
 	background: none;
 	padding: 16px;
-	${headerFont}
-
-	// font-family: Helvetica;
-	font-weight: 700;
-	font-size: 1rem;
-	color: black;
 	height: calc(100% - 32px);
 	align-items: center;
+
+	// Typography
+	// ${headerFont}
+	// text-decoration: none;
+	// font-family: Helvetica;
+	// font-weight: 700;
+	// font-size: 1rem;
+	// color: black;
 `
 
-export const StyledLink = styled(Link)`
+interface IStyledLink {
+	typography: Styles<object>
+}
+
+export const StyledLink = styled(Link)<IStyledLink>`
 	${NavLinkStyle}
+
+	// Typography
+	${(props) => props.typography}
 `
 
-interface IStyledButton {
+interface IStyledButton extends IStyledLink {
 	active?: boolean
 	activeStyle?: Styles<object>
 	disabled?: boolean
@@ -37,11 +45,17 @@ export const StyledButton = styled.button<IStyledButton>`
 	${NavLinkStyle}
 	height: 48px;
 	cursor: pointer;
+
+	// Typography
+	${(props) => props.typography}
+
+	// Active Typography Style
 	${(props) =>
 		props.active && props.activeStyle !== undefined
 			? css(props.activeStyle)
 			: ""}
 
+	// Disabled Style
 	${(props) =>
 		props.disabled &&
 		css`

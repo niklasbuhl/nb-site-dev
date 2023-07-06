@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
-import { ActiveStyle, StyledButton, StyledLink } from "./navLink.styles"
+import { StyledButton, StyledLink } from "./navLink.styles"
 import EventContext from "../../../contexts/event.context"
 import LayoutContext from "../../../contexts/layout.context"
-import { RuleSet, css } from "styled-components"
+import ThemeContext from "../../../contexts/theme.context"
 
 interface INavLink {
 	to?: string
@@ -19,10 +19,9 @@ const NavLink: React.FC<INavLink> = ({
 }) => {
 	const { view } = useContext(EventContext)
 	const { layout } = useContext(LayoutContext)
+	const { typography } = useContext(ThemeContext)
 	const [activeLinkStyle, setActiveLinkStyle] = useState<object>({})
-	const activeStyle = {
-		color: "cyan",
-	}
+	const activeStyle = typography.navigationBarActive
 
 	// Set active style for Links
 	useEffect(() => {
@@ -44,6 +43,7 @@ const NavLink: React.FC<INavLink> = ({
 					partiallyActive={true}
 					to={to}
 					onClick={onClick}
+					typography={typography.navigationBar}
 				>
 					{children}
 				</StyledLink>
@@ -53,11 +53,14 @@ const NavLink: React.FC<INavLink> = ({
 					// Above hero header
 					active={active}
 					activeStyle={activeStyle}
+					typography={typography.navigationBar}
 				>
 					{children}
 				</StyledButton>
 			) : (
-				<StyledButton disabled>{children}</StyledButton>
+				<StyledButton typography={typography.navigationBar} disabled>
+					{children}
+				</StyledButton>
 			)}
 		</React.Fragment>
 	)

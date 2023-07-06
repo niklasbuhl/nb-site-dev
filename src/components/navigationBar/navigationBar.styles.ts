@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import elementStyles from "../../styles/elementStyles"
 import { DisplayType } from "../../contexts/event.context"
+import React from "react"
 
 interface INav {
 	hidden: boolean
@@ -40,6 +41,17 @@ export const DesktopMenu = styled.div<IDesktopMenu>`
 	padding-right: ${(props) =>
 		props.display === DisplayType.Mobile ? 0 : props.gutter};
 	max-width: calc(${(props) => props.width + " - " + props.gutter + " * 2"});
+`
+
+interface IMenu {
+	children: React.ReactNode
+	display: DisplayType
+}
+
+export const Menu = styled.div<IMenu>`
+	display: flex;
+	flex-direction: ${(props) =>
+		props.display !== DisplayType.Mobile ? "row" : "column"};
 `
 
 interface IMobileMenu {}

@@ -4,8 +4,11 @@ export const fonts = css`
 	// Laser84
 	@import url("https://fonts.cdnfonts.com/css/lazer84");
 
-	// Headers (Sans) Swansea
+	// Headers 1 (Sans) Swansea
 	@import url("https://fonts.cdnfonts.com/css/swansea?styles=32249,32248,32247,32246");
+
+	// Headers 2 (Sans) SpaceText
+	@import url("https://fonts.cdnfonts.com/css/space-text");
 
 	// Text (Serif)
 
@@ -21,7 +24,8 @@ export const laserFont = css`
 export const textFont = css``
 
 export const headerFont = css`
-	font-family: "Swansea", sans-serif;
+	// font-family: "Swansea", sans-serif;
+	font-family: "Space Text", sans-serif;
 `
 
 export const codeFont = css``

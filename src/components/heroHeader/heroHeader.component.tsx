@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react"
 import EventContext from "../../contexts/event.context"
 import LayoutContext from "../../contexts/layout.context"
 import { Section } from "./heroHeader.styles"
+import ThemeContext from "../../contexts/theme.context"
 
 const HeroHeader: React.FC = () => {
 	const { layout } = useContext(LayoutContext)
 	const { view, location } = useContext(EventContext)
+	const { color } = useContext(ThemeContext)
 
 	// Scroll beyond heroheader
 	useEffect(() => {
@@ -28,7 +30,10 @@ const HeroHeader: React.FC = () => {
 	}, [])
 
 	return (
-		<Section height={layout.heroHeaderHeight}>
+		<Section
+			height={layout.heroHeaderHeight}
+			backgroundColor={color.purple.hsl().string()}
+		>
 			<h1>Hero Header</h1>
 		</Section>
 	)

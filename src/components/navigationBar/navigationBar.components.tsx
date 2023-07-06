@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from "react"
-import { DesktopMenu, MobileMenu, Nav } from "./navigationBar.styles"
+import { DesktopMenu, Menu, MobileMenu, Nav } from "./navigationBar.styles"
 import EventContext, { DisplayType } from "../../contexts/event.context"
 import LayoutContext from "../../contexts/layout.context"
 import NavLink from "./navLink/navLink.components"
 import LogoText from "./logoText/logoText.component"
 import LogoGraphic from "./logoGraphic/logo.component"
 import { MoreVertical, X } from "lucide-react"
+import ThemeContext from "../../contexts/theme.context"
 
 const NavigationBar: React.FC = () => {
 	const { view, location } = useContext(EventContext)
 	const { layout } = useContext(LayoutContext)
+	const { typography } = useContext(ThemeContext)
+
 	const [hideNav, setHideNav] = useState<boolean>(false)
 	const [hideTextLogo, setHideTextLogo] = useState<boolean>(false)
 	const [showMobileMenu, setShowMobileMenu] = useState(false)
@@ -66,6 +69,14 @@ const NavigationBar: React.FC = () => {
 			layout.disableScroll(showMobileMenu)
 	}, [showMobileMenu])
 
+	// Hide mobile menu is display changes
+	useEffect(() => {
+		if (view.display !== DisplayType.Mobile) {
+			setShowMobileMenu(false)
+			layout.disableScroll(false)
+		}
+	}, [view.display])
+
 	// Scroll to top
 	const goToTop = () => {
 		const topPosition = layout.getHeroHeaderHeightPixel()
@@ -116,6 +127,31 @@ const NavigationBar: React.FC = () => {
 		})
 	}
 
+	const Logo: React.ReactNode = (
+		<LogoGraphic
+			typography={typography.navigationBar}
+			activeStyle={typography.navigationBarActive}
+			onClick={goToTop}
+			to="/"
+		/>
+	)
+
+	const menu: React.ReactNode = (
+		<Menu display={view.display}>
+			<NavLink onClick={goToTop} to="/projects">
+				Projects
+			</NavLink>
+			<NavLink>Writings</NavLink>
+			<NavLink>About</NavLink>
+			<NavLink
+				onClick={scrollToHeroHeader}
+				active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
+			>
+				Contact
+			</NavLink>
+		</Menu>
+	)
+
 	return (
 		<Nav
 			hidden={hideNav}
@@ -135,26 +171,12 @@ const NavigationBar: React.FC = () => {
 							justifyContent: "space-between",
 						}}
 					>
-						<LogoGraphic onClick={goToTop} to="/" />
+						{Logo}
 						<NavLink onClick={toggleMenu}>
 							{showMobileMenu ? <X size={20} /> : <MoreVertical size={20} />}
 						</NavLink>
 					</div>
-					{showMobileMenu ? (
-						<div>
-							<NavLink onClick={goToTop} to="/projects">
-								Projects
-							</NavLink>
-							<NavLink>Writings</NavLink>
-							<NavLink>About</NavLink>
-							<NavLink
-								onClick={scrollToHeroHeader}
-								active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
-							>
-								Contact
-							</NavLink>
-						</div>
-					) : null}
+					{showMobileMenu ? menu : null}
 				</MobileMenu>
 			) : (
 				<DesktopMenu
@@ -163,29 +185,19 @@ const NavigationBar: React.FC = () => {
 					gutter={layout.gutter}
 				>
 					<div style={{ display: "flex" }}>
-						<LogoGraphic onClick={goToTop} to="/" />
+						{Logo}
 						<LogoText
 							onClick={goToTop}
 							to="/"
 							hideTextLogo={hideTextLogo}
 							pathname={location?.pathname || ""}
+							typography={typography.navigationBar}
+							activeStyle={typography.navigationBarActive}
 						>
 							Niklas Buhl
 						</LogoText>
 					</div>
-					<div style={{ display: "flex" }}>
-						<NavLink onClick={goToTop} to="/projects">
-							Projects
-						</NavLink>
-						<NavLink>Writings</NavLink>
-						<NavLink>About</NavLink>
-						<NavLink
-							onClick={scrollToHeroHeader}
-							active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
-						>
-							Contact
-						</NavLink>
-					</div>
+					{menu}
 				</DesktopMenu>
 			)}
 		</Nav>
