@@ -77,7 +77,7 @@ const config: GatsbyConfig = {
 						{
 							family: "Space Grotesk",
 							urls: {
-								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Semibold.woff`,
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-SemiBold.woff`,
 							},
 							fontStyle: "semibold",
 							fontWeight: 600,
