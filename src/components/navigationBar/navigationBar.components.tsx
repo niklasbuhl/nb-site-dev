@@ -214,7 +214,7 @@ const NavigationBar: React.FC = () => {
 							hideTextLogo={hideTextLogo}
 							pathname={location?.pathname || ""}
 							typography={typography.navigationBar}
-							activeStyle={typography.navigationBarActive}
+							activeStyle={activeLinkStyle}
 						>
 							Niklas Buhl
 						</LogoText>

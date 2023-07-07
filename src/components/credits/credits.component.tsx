@@ -18,7 +18,7 @@ const Credits: React.FC = () => {
 			</div>
 			<div>
 				<span style={typography.tech as CSSProperties}>
-					Copyrights {new Date().getFullYear()} Niklas Buhl
+					Copyrights © {new Date().getFullYear()} Niklas Buhl
 				</span>
 			</div>
 			<div>
