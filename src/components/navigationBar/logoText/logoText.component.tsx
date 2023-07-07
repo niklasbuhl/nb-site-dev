@@ -1,11 +1,10 @@
 import React from "react"
 import { styled } from "styled-components"
-import { laserFont } from "../../../styles/fonts"
 import { Link } from "gatsby"
 import { Styles } from "styled-components/dist/types"
 
 export const LogoText = styled(Link)<{
-	hideTextLogo: boolean
+	$hideTextLogo: boolean
 	children: React.ReactNode
 	pathname: string
 	typography: Styles<object>
@@ -15,8 +14,6 @@ export const LogoText = styled(Link)<{
 	padding: 16px;
 
 	// Typography
-	// ${laserFont}
-	// text-decoration: none;
 	${(props) => props.typography}
 
 	// Animation
@@ -25,7 +22,7 @@ export const LogoText = styled(Link)<{
 	color: black;
 
 	${(props) =>
-		props.hideTextLogo && props.pathname === "/"
+		props.$hideTextLogo && props.pathname === "/"
 			? "transform: translateY(-96px);"
 			: ""}
 `

@@ -6,7 +6,7 @@ import React from "react"
 interface INav {
 	hidden: boolean
 	height: string
-	showMobileMenu: boolean
+	$showMobileMenu: boolean
 }
 
 export const Nav = styled.nav<INav>`
@@ -19,7 +19,7 @@ export const Nav = styled.nav<INav>`
 	animation-timing-function: ease-in;
 	transition: transform 0.2s, height 0.3s ease;
 	${(props) => (props.hidden ? `transform: translateY(-96px);` : "")}
-	${(props) => (props.showMobileMenu ? "background: white;" : "")}
+	${(props) => (props.$showMobileMenu ? "background: white;" : "")}
 `
 
 interface IDesktopMenu {

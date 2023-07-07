@@ -26,6 +26,23 @@ const config: GatsbyConfig = {
 		// 	},
 		// 	__key: "images",
 		// },
+		// Projects
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `projects`,
+				path: `${__dirname}/src/content/projects/`,
+			},
+		},
+		// Writings
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `projects`,
+				path: `${__dirname}/src/content/writings/`,
+			},
+		},
+		// Pages
 		{
 			resolve: "gatsby-source-filesystem",
 			options: {
@@ -34,6 +51,7 @@ const config: GatsbyConfig = {
 			},
 			__key: "pages",
 		},
+		// Typefaces
 		{
 			resolve: `gatsby-plugin-webfonts`,
 			options: {

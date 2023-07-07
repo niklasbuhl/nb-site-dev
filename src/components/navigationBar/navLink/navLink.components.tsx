@@ -9,7 +9,7 @@ import { Styles } from "styled-components/dist/types"
 interface INavLink {
 	to?: string
 	onClick?: () => void
-	active?: boolean
+	$active?: boolean
 	children: React.ReactNode
 	activeStyle?: Styles<object>
 	activeLinkStyle?: Styles<object>
@@ -18,27 +18,12 @@ interface INavLink {
 const NavLink: React.FC<INavLink> = ({
 	children,
 	to = undefined,
-	active,
+	$active,
 	onClick = undefined,
 	activeStyle,
 	activeLinkStyle,
 }) => {
-	const { view } = useContext(EventContext)
-	const { layout } = useContext(LayoutContext)
 	const { typography } = useContext(ThemeContext)
-	// const [activeLinkStyle, setActiveLinkStyle] = useState<object>({})
-
-	// // Set active style for Links
-	// useEffect(() => {
-	// 	// Above heroheader edge
-	// 	if (view.scroll < layout.getHeroHeaderHeightPixel() / 2) {
-	// 		setActiveLinkStyle({})
-
-	// 		// Below
-	// 	} else {
-	// 		setActiveLinkStyle(activeStyle)
-	// 	}
-	// }, [view.scroll])
 
 	return (
 		<React.Fragment>
@@ -56,8 +41,8 @@ const NavLink: React.FC<INavLink> = ({
 				<StyledButton
 					onClick={onClick}
 					// Above hero header
-					active={active}
-					activeStyle={activeStyle}
+					$active={$active}
+					$activeStyle={activeStyle}
 					typography={typography.navigationBar}
 				>
 					{children}

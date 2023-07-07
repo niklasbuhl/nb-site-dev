@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "^2.3.0",
+    "@sindresorhus/slugify": "^2.2.1",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.1.4",
     "color": "^4.2.3",

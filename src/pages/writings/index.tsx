@@ -2,19 +2,20 @@ import React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import PageLayout from "../../layouts/pageLayout.component"
 import PageSection from "../../components/pageSection/pageSection.component"
-import ProjectsIndex from "../../components/projectsIndex/projectsIndex.component"
+import WritingsIndex from "../../components/writingsIndex/writingIndex.components"
 
-const ProjectsPage: React.FC<PageProps> = (PageProps) => {
+const WritingsPage: React.FC<PageProps> = (PageProps) => {
 	return (
 		<PageLayout PageProps={PageProps}>
 			<PageSection>
-				<h1>Projects</h1>
-				<ProjectsIndex />
+				<h1>Writings</h1>
+				<p>Sharing is caring.</p>
+				<WritingsIndex />
 			</PageSection>
 		</PageLayout>
 	)
 }
 
-export default ProjectsPage
+export default WritingsPage
 
 export const Head: HeadFC = () => <title>Niklas Buhl</title>

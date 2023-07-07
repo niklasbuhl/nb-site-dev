@@ -27,8 +27,8 @@ export const StyledLink = styled(Link)<IStyledLink>`
 `
 
 interface IStyledButton extends IStyledLink {
-	active?: boolean
-	activeStyle?: Styles<object>
+	$active?: boolean
+	$activeStyle?: Styles<object>
 	disabled?: boolean
 }
 
@@ -42,8 +42,8 @@ export const StyledButton = styled.button<IStyledButton>`
 
 	// Active Typography Style
 	${(props) =>
-		props.active && props.activeStyle !== undefined
-			? css(props.activeStyle)
+		props.$active && props.$activeStyle !== undefined
+			? css(props.$activeStyle)
 			: ""}
 
 	// Disabled Style

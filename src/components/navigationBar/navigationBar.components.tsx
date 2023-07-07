@@ -162,12 +162,20 @@ const NavigationBar: React.FC = () => {
 			>
 				Projects
 			</NavLink>
-			<NavLink activeLinkStyle={activeLinkStyle}>Writings</NavLink>
-			<NavLink activeLinkStyle={activeLinkStyle}>About</NavLink>
+			<NavLink
+				to="/writings"
+				onClick={goToTop}
+				activeLinkStyle={activeLinkStyle}
+			>
+				Writings
+			</NavLink>
+			<NavLink to="/about" onClick={goToTop} activeLinkStyle={activeLinkStyle}>
+				About
+			</NavLink>
 			<NavLink
 				activeStyle={activeStyle}
 				onClick={scrollToHeroHeader}
-				active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
+				$active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
 			>
 				Contact
 			</NavLink>
@@ -182,7 +190,7 @@ const NavigationBar: React.FC = () => {
 					? "100vh"
 					: layout.navigationBarHeight
 			}
-			showMobileMenu={showMobileMenu}
+			$showMobileMenu={showMobileMenu}
 		>
 			{view.display === DisplayType.Mobile ? (
 				<MobileMenu>
@@ -211,7 +219,7 @@ const NavigationBar: React.FC = () => {
 						<LogoText
 							onClick={goToTop}
 							to="/"
-							hideTextLogo={hideTextLogo}
+							$hideTextLogo={hideTextLogo}
 							pathname={location?.pathname || ""}
 							typography={typography.navigationBar}
 							activeStyle={activeLinkStyle}

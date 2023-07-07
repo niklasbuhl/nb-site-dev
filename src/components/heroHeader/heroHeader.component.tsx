@@ -32,7 +32,7 @@ const HeroHeader: React.FC = () => {
 	return (
 		<Section
 			height={layout.heroHeaderHeight}
-			backgroundColor={color.purple.hsl().string()}
+			$backgroundColor={color.purple.hsl().string()}
 		>
 			<h1>Hero Header</h1>
 		</Section>
