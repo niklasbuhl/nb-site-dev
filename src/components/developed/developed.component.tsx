@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { CodeLink, Section } from "./developed.styles"
 import { Coffee, Heart, Keyboard, Pencil } from "lucide-react"
-import { DisplayType, EventContext } from "../../context/event.context"
+import EventContext, { DisplayType } from "../../contexts/event.context"
 
 const Developed: React.FC = () => {
 	const { view } = useContext(EventContext)

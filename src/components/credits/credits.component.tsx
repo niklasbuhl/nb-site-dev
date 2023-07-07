@@ -5,12 +5,6 @@ import ThemeContext from "../../contexts/theme.context"
 import { CSSProperties } from "react"
 import { Styles } from "styled-components/dist/types"
 
-const convertStylesToCSSProperties = (
-	styles: Styles<object>
-): CSSProperties => {
-	return styles as CSSProperties
-}
-
 const Credits: React.FC = () => {
 	const { typography } = useContext(ThemeContext)
 
@@ -23,8 +17,8 @@ const Credits: React.FC = () => {
 				<span>Model</span> */}
 			</div>
 			<div>
-				<span style={convertStylesToCSSProperties(typography.tech)}>
-					Niklas Buhl (c) {new Date().getFullYear()}
+				<span style={typography.tech as CSSProperties}>
+					Copyrights {new Date().getFullYear()} Niklas Buhl
 				</span>
 			</div>
 			<div>

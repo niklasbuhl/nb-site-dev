@@ -1,6 +1,6 @@
 import { css } from "styled-components"
 
-export const fonts = css`
+export const typefaces = css`
 	// Laser84
 	// @import url("https://fonts.cdnfonts.com/css/lazer84");
 
@@ -14,13 +14,14 @@ export const fonts = css`
 
 	// Electronics
 	@import url("https://fonts.cdnfonts.com/css/ocr-a-bt");
+
 	// @import url("https://fonts.cdnfonts.com/css/islandvari");
 `
 
-export const laserFont = css`
-	font-family: "lazer84", sans-serif;
-`
-export const techFont = css`
-	// font-family: "ISL_Andvari", sans-serif;
-	font-family: "OCR-A BT", sans-serif;
-`
+// export const laserFont = css`
+// 	font-family: "lazer84", sans-serif;
+// `
+// export const techFont = css`
+// 	// font-family: "ISL_Andvari", sans-serif;
+// 	font-family: "OCR-A BT", sans-serif;
+// `

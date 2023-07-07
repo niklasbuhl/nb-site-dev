@@ -24,7 +24,8 @@ const colors = {
 const themeDefaultState: IThemeContext = {
 	typography: {
 		navigationBar: {
-			fontFamily: "'space-text', sans-serif",
+			fontFamily: "'Space Grotesk', sans-serif",
+			// fontFamily: "'space-text', sans-serif",
 			textDecoration: "none",
 			fontWeight: "500",
 			fontSize: "1rem",
@@ -34,9 +35,9 @@ const themeDefaultState: IThemeContext = {
 			color: colors.purple.hsl().string(),
 		},
 		tech: {
-			fontFamily: "'OCR-A BT', sans-serif",
+			fontFamily: "'OCR', sans-serif",
 			fontWeight: "400",
-			fontSize: "0.7rem",
+			fontSize: "0.8rem",
 		},
 	},
 	color: {

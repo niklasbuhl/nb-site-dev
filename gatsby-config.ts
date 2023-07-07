@@ -34,6 +34,99 @@ const config: GatsbyConfig = {
 			},
 			__key: "pages",
 		},
+		{
+			resolve: `gatsby-plugin-webfonts`,
+			options: {
+				fonts: {
+					selfHosted: [
+						// OCR
+						{
+							family: "OCR",
+							urls: {
+								woff: `./src/typefaces/ocr/OCRAExtended.woff`,
+								woff2: `./src/typefaces/ocr/OCRAExtended.woff2`,
+							},
+							fontStyle: "normal",
+							fontWeight: 400,
+						},
+						// Space Grotesk
+						{
+							family: "Space Grotesk",
+							urls: {
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Light.woff`,
+							},
+							fontStyle: "light",
+							fontWeight: 300,
+						},
+						{
+							family: "Space Grotesk",
+							urls: {
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Regular.woff`,
+							},
+							fontStyle: "regular",
+							fontWeight: 400,
+						},
+						{
+							family: "Space Grotesk",
+							urls: {
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Medium.woff`,
+							},
+							fontStyle: "medium",
+							fontWeight: 500,
+						},
+						{
+							family: "Space Grotesk",
+							urls: {
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Semibold.woff`,
+							},
+							fontStyle: "semibold",
+							fontWeight: 600,
+						},
+						{
+							family: "Space Grotesk",
+							urls: {
+								woff: `./src/typefaces/spaceGrotesk/SpaceGrotesk-Bold.woff`,
+							},
+							fontStyle: "bold",
+							fontWeight: 700,
+						},
+						// Space Mono
+						{
+							family: "Space Mono",
+							urls: {
+								woff: `./src/typefaces/spaceMono/SpaceMono-Regular.woff`,
+							},
+							fontStyle: "regular",
+							fontWeight: 400,
+						},
+						{
+							family: "Space Mono",
+							urls: {
+								woff: `./src/typefaces/spaceMono/SpaceMono-Italic.woff`,
+							},
+							fontStyle: "italic",
+							fontWeight: 400,
+						},
+						{
+							family: "Space Mono",
+							urls: {
+								woff: `./src/typefaces/spaceMono/SpaceMono-Bold.woff`,
+							},
+							fontStyle: "bold",
+							fontWeight: 700,
+						},
+						{
+							family: "Space Mono",
+							urls: {
+								woff: `./src/typefaces/spaceMono/SpaceMono-BoldItalic.woff`,
+							},
+							fontStyle: "bold italic",
+							fontWeight: 700,
+						},
+					],
+				},
+			},
+		},
 	],
 }
 

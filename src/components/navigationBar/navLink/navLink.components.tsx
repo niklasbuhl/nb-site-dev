@@ -3,12 +3,16 @@ import { StyledButton, StyledLink } from "./navLink.styles"
 import EventContext from "../../../contexts/event.context"
 import LayoutContext from "../../../contexts/layout.context"
 import ThemeContext from "../../../contexts/theme.context"
+import { RuleSet } from "styled-components"
+import { Styles } from "styled-components/dist/types"
 
 interface INavLink {
 	to?: string
 	onClick?: () => void
 	active?: boolean
 	children: React.ReactNode
+	activeStyle?: Styles<object>
+	activeLinkStyle?: Styles<object>
 }
 
 const NavLink: React.FC<INavLink> = ({
@@ -16,24 +20,25 @@ const NavLink: React.FC<INavLink> = ({
 	to = undefined,
 	active,
 	onClick = undefined,
+	activeStyle,
+	activeLinkStyle,
 }) => {
 	const { view } = useContext(EventContext)
 	const { layout } = useContext(LayoutContext)
 	const { typography } = useContext(ThemeContext)
-	const [activeLinkStyle, setActiveLinkStyle] = useState<object>({})
-	const activeStyle = typography.navigationBarActive
+	// const [activeLinkStyle, setActiveLinkStyle] = useState<object>({})
 
-	// Set active style for Links
-	useEffect(() => {
-		// Above heroheader edge
-		if (view.scroll < layout.getHeroHeaderHeightPixel() / 2) {
-			setActiveLinkStyle({})
+	// // Set active style for Links
+	// useEffect(() => {
+	// 	// Above heroheader edge
+	// 	if (view.scroll < layout.getHeroHeaderHeightPixel() / 2) {
+	// 		setActiveLinkStyle({})
 
-			// Below
-		} else {
-			setActiveLinkStyle(activeStyle)
-		}
-	}, [view.scroll])
+	// 		// Below
+	// 	} else {
+	// 		setActiveLinkStyle(activeStyle)
+	// 	}
+	// }, [view.scroll])
 
 	return (
 		<React.Fragment>

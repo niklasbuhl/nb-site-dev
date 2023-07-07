@@ -7,6 +7,7 @@ import LogoText from "./logoText/logoText.component"
 import LogoGraphic from "./logoGraphic/logo.component"
 import { MoreVertical, X } from "lucide-react"
 import ThemeContext from "../../contexts/theme.context"
+import { Styles } from "styled-components/dist/types"
 
 const NavigationBar: React.FC = () => {
 	const { view, location } = useContext(EventContext)
@@ -16,6 +17,22 @@ const NavigationBar: React.FC = () => {
 	const [hideNav, setHideNav] = useState<boolean>(false)
 	const [hideTextLogo, setHideTextLogo] = useState<boolean>(false)
 	const [showMobileMenu, setShowMobileMenu] = useState(false)
+	const [activeLinkStyle, setActiveLinkStyle] = useState<Styles<object>>({})
+
+	// Active style
+	const activeStyle = typography.navigationBarActive
+
+	// Set active style for Links
+	useEffect(() => {
+		// Above heroheader edge
+		if (view.scroll < layout.getHeroHeaderHeightPixel() / 2) {
+			setActiveLinkStyle({})
+
+			// Below
+		} else {
+			setActiveLinkStyle(activeStyle)
+		}
+	}, [view.scroll])
 
 	// Hide navigation bar
 	useEffect(() => {
@@ -130,7 +147,7 @@ const NavigationBar: React.FC = () => {
 	const Logo: React.ReactNode = (
 		<LogoGraphic
 			typography={typography.navigationBar}
-			activeStyle={typography.navigationBarActive}
+			activeStyle={activeLinkStyle}
 			onClick={goToTop}
 			to="/"
 		/>
@@ -138,12 +155,17 @@ const NavigationBar: React.FC = () => {
 
 	const menu: React.ReactNode = (
 		<Menu display={view.display}>
-			<NavLink onClick={goToTop} to="/projects">
+			<NavLink
+				activeLinkStyle={activeLinkStyle}
+				onClick={goToTop}
+				to="/projects"
+			>
 				Projects
 			</NavLink>
-			<NavLink>Writings</NavLink>
-			<NavLink>About</NavLink>
+			<NavLink activeLinkStyle={activeLinkStyle}>Writings</NavLink>
+			<NavLink activeLinkStyle={activeLinkStyle}>About</NavLink>
 			<NavLink
+				activeStyle={activeStyle}
 				onClick={scrollToHeroHeader}
 				active={view.scroll < layout.getHeroHeaderHeightPixel() / 2}
 			>

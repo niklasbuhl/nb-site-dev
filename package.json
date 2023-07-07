@@ -26,6 +26,7 @@
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
     "gatsby-plugin-styled-components": "^6.11.0",
+    "gatsby-plugin-webfonts": "^2.3.2",
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
     "lucide-react": "^0.258.0",
