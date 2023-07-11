@@ -1,4 +1,14 @@
-import { css } from "styled-components"
+const typefaces = {
+	code: "'Space Mono'",
+	articleHeader: "'Space Grotesk', sans-serif",
+	navigationBar: "'Space Grotesk', sans-serif",
+	tech: "'OCR', sans-serif",
+	paragraph: "'Charter', serif",
+}
+
+export default typefaces
+
+/*
 
 export const typefaces = css`
 	// Laser84
@@ -16,12 +26,14 @@ export const typefaces = css`
 	@import url("https://fonts.cdnfonts.com/css/ocr-a-bt");
 
 	// @import url("https://fonts.cdnfonts.com/css/islandvari");
-`
 
-// export const laserFont = css`
-// 	font-family: "lazer84", sans-serif;
-// `
-// export const techFont = css`
-// 	// font-family: "ISL_Andvari", sans-serif;
-// 	font-family: "OCR-A BT", sans-serif;
-// `
+
+
+export const laserFont = css`
+	font-family: "lazer84", sans-serif;
+`
+export const techFont = css`
+	// font-family: "ISL_Andvari", sans-serif;
+	font-family: "OCR-A BT", sans-serif;
+`
+*/

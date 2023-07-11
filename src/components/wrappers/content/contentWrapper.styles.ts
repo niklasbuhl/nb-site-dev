@@ -13,6 +13,7 @@ export interface IProps {
 	vertical?: string // default: center
 	horizontal?: string // default: center
 	addCSS?: RuleSet
+	typography?: RuleSet
 }
 
 export interface IContentWrapperDiv {
@@ -24,25 +25,41 @@ export const ContentWrapperDiv = styled.div<IContentWrapperDiv>`
 	display: flex;
 
 	// Height
-	${(p) => (p.$props.height ? "height: " + p.$props.height + ";" : "")}
+	${(p) => (p.$props.height ? "min-height: " + p.$props.height + ";" : null)}
 
 	// Width
-	${(p) => (p.$props.width ? "width: " + p.$props.width + ";" : "")}
+	${(p) => (p.$props.width ? "width: " + p.$props.width + ";" : null)}
 
 	// Max Width
-	${(p) => (p.$props.maxWidth ? "max-width: " + p.$props.maxWidth + ";" : "")}
+	${(p) => (p.$props.maxWidth ? "max-width: " + p.$props.maxWidth + ";" : null)}
 
 	// Gutter
-	${(p) => (p.$props.gutter ? "margin: " + p.$props.gutter + ";" : "")}
-	${(p) => (p.$props.mainGutter ? "padding-top: " + p.$props.mainGutter : "")};
+	${(p) => (p.$props.gutter ? "padding: " + p.$props.gutter + ";" : null)}
 	${(p) =>
-		p.$props.mainGutter ? "padding-bottom: " + p.$props.mainGutter : ""};
+		p.$props.mainGutter
+			? "padding-top: calc(" +
+			  p.$props.mainGutter +
+			  " + " +
+			  p.$props.gutter +
+			  ");"
+			: null}
+	${(p) =>
+		p.$props.mainGutter
+			? "padding-bottom: calc(" +
+			  p.$props.mainGutter +
+			  " + " +
+			  p.$props.gutter +
+			  ");"
+			: null};
 
 	// Position Content (direction, vertical, horizontal)
 	${alingContent}
 
+	// Typography
+	${(p) => (p.$props.typography ? p.$props.typography : null)}
+
 	// Additional CSS
-	${(p) => (p.$props.addCSS ? p.$props.addCSS : "")}
+	${(p) => (p.$props.addCSS ? p.$props.addCSS : null)}
 `
 
 export const ContentWrapperMain = styled(ContentWrapperDiv).attrs({

@@ -1,12 +1,20 @@
 import React, { useState } from "react"
-import { Styles } from "styled-components/dist/types"
+import { RuleSet, Styles } from "styled-components/dist/types"
 import Color from "color"
+import colors from "../styles/colors"
+import { css } from "styled-components"
+import writingTypographies from "../styles/writingTypographies"
+import typographies from "../styles/typographies"
 
 interface IThemeContext {
 	typography: {
 		navigationBar: Styles<object>
 		navigationBarActive: Styles<object>
 		tech: Styles<object>
+		code: Styles<object>
+	}
+	typographyStyle: {
+		writing: Styles<object>
 	}
 	color: {
 		purple: Color
@@ -15,30 +23,15 @@ interface IThemeContext {
 	}
 }
 
-const colors = {
-	purple: Color.rgb([83, 1, 255]),
-	white: Color.rgb([255, 255, 255]), // TODO better white
-	black: Color.rgb([0, 0, 0]), // TODO better black
-}
-
 const themeDefaultState: IThemeContext = {
 	typography: {
-		navigationBar: {
-			fontFamily: "'Space Grotesk', sans-serif",
-			// fontFamily: "'space-text', sans-serif",
-			textDecoration: "none",
-			fontWeight: "500",
-			fontSize: "1rem",
-			color: colors.black.hsl().string(),
-		},
-		navigationBarActive: {
-			color: colors.purple.hsl().string(),
-		},
-		tech: {
-			fontFamily: "'OCR', sans-serif",
-			fontWeight: "400",
-			fontSize: "0.8rem",
-		},
+		navigationBar: typographies.navigationBar,
+		navigationBarActive: typographies.navigationBarActive,
+		tech: typographies.tech,
+		code: typographies.code as Styles<object>,
+	},
+	typographyStyle: {
+		writing: writingTypographies as Styles<object>,
 	},
 	color: {
 		purple: colors.purple,
@@ -54,12 +47,14 @@ interface IThemeProvider {
 }
 
 export const ThemeProvider: React.FC<IThemeProvider> = ({ children }) => {
-	// const theme: IThemeContext = themeDefaultState
 	const [typography, setTypography] = useState(themeDefaultState.typography)
+	const [typographyStyle, setTypographyStyles] = useState(
+		themeDefaultState.typographyStyle
+	)
 	const [color, setColor] = useState(themeDefaultState.color)
 
 	return (
-		<ThemeContext.Provider value={{ typography, color }}>
+		<ThemeContext.Provider value={{ typography, typographyStyle, color }}>
 			{children}
 		</ThemeContext.Provider>
 	)

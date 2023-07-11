@@ -38,7 +38,6 @@ export const createPages: GatsbyNode["createPages"] = async ({
 				nodes {
 					id
 					frontmatter {
-						title
 						slug
 						type
 					}
@@ -61,6 +60,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
 	const projectPageLayoutPath = path.resolve(
 		`./src/layouts/projectPageLayout.component.tsx`
 	)
+
 	const subProjectPageLayoutPath = path.resolve(
 		`./src/layouts/subProjectPageLayout.component.tsx`
 	)
@@ -70,10 +70,28 @@ export const createPages: GatsbyNode["createPages"] = async ({
 	)
 
 	contents.forEach((node: INode) => {
-		// Article (Guide / Tutorials)
+		// Articles
+		if (node.frontmatter.type === "article") {
+			createPage({
+				path: `/articles/${node.frontmatter.slug}`,
+				component: `${articlePageLayoutPath}?__contentFilePath=${node.internal.contentFilePath}`,
+				context: { id: node.id },
+			})
+		}
+
+		// Article (Guide)
 		if (node.frontmatter.type === "guide") {
 			createPage({
-				path: `/writings/guides/${node.frontmatter.slug}`,
+				path: `/guides/${node.frontmatter.slug}`,
+				component: `${articlePageLayoutPath}?__contentFilePath=${node.internal.contentFilePath}`,
+				context: { id: node.id },
+			})
+		}
+
+		// Article (Tutorials)
+		if (node.frontmatter.type === "tutorial") {
+			createPage({
+				path: `/tutorials/${node.frontmatter.slug}`,
 				component: `${articlePageLayoutPath}?__contentFilePath=${node.internal.contentFilePath}`,
 				context: { id: node.id },
 			})

@@ -23,6 +23,7 @@ export interface IContentWrapper {
 	children?: React.ReactNode
 	type?: string
 	addCSS?: RuleSet
+	typography?: RuleSet
 }
 
 const ContentWrapper: React.FC<IContentWrapper> = ({
@@ -38,6 +39,7 @@ const ContentWrapper: React.FC<IContentWrapper> = ({
 	children,
 	type,
 	addCSS,
+	typography,
 }) => {
 	const [props, setProps] = useState<IProps>({
 		height,
@@ -49,6 +51,7 @@ const ContentWrapper: React.FC<IContentWrapper> = ({
 		vertical,
 		horizontal,
 		addCSS,
+		typography,
 	})
 
 	// Return based on type
