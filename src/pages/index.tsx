@@ -58,8 +58,7 @@ const IndexPage: React.FC<PageProps> = (PageProps) => {
 					</p>
 					<p style={{ color: colors.neonPurple.hsl().string() }}>
 						By night I am a creative coder, new media artisan, maker,
-						environmentalist and technology literacy and ethics
-						advocate/activist.
+						environmentalist and technology literacy and ethics advocate.
 					</p>
 					<p style={{ color: colors.coralOrange.hsl().string() }}>
 						As a passionate surfer I live in a remote corner of Denmark called
