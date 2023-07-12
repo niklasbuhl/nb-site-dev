@@ -17,9 +17,9 @@ interface IThemeContext {
 		writing: Styles<object>
 	}
 	color: {
-		purple: Color
-		white: Color
-		black: Color
+		neonPurple: Color
+		hardWhite: Color
+		hardBlack: Color
 	}
 }
 
@@ -34,9 +34,9 @@ const themeDefaultState: IThemeContext = {
 		writing: writingTypographies as Styles<object>,
 	},
 	color: {
-		purple: colors.purple,
-		white: colors.white,
-		black: colors.black,
+		neonPurple: colors.neonPurple,
+		hardWhite: colors.hardWhite,
+		hardBlack: colors.hardBlack,
 	},
 }
 

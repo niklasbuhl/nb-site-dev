@@ -18,6 +18,7 @@ export const writingTypographies = css`
 		font-size: 4rem;
 		letter-spacing: -2px;
 		margin-bottom: 8px;
+		margin-top: 64px;
 	}
 
 	h2 {
@@ -39,9 +40,13 @@ export const writingTypographies = css`
 	p,
 	pre,
 	code {
+		font-size: 1rem;
+	}
+
+	p,
+	pre {
 		margin: 16px;
 		margin-top: 0;
-		font-size: 1rem;
 	}
 
 	p,

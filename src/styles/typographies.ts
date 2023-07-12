@@ -1,6 +1,7 @@
 import { css } from "styled-components"
 import typefaces from "./typefaces"
 import colors from "./colors"
+import { RuleSet, Styles } from "styled-components/dist/types"
 
 const code = css`
 	font-family: ${typefaces.code};
@@ -12,11 +13,11 @@ const navigationBar = {
 	textDecoration: "none",
 	fontWeight: "500",
 	fontSize: "1rem",
-	color: colors.black.hsl().string(),
+	color: colors.hardBlack.hsl().string(),
 }
 
 const navigationBarActive = {
-	color: colors.purple.hsl().string(),
+	color: colors.neonPurple.hsl().string(),
 }
 
 const tech = {
@@ -25,8 +26,12 @@ const tech = {
 	fontSize: "0.8rem",
 }
 
-const typographies = {
-	code,
+interface ITypographies {
+	[key: string]: Styles<object>
+}
+
+const typographies: ITypographies = {
+	code: code as Styles<object>,
 	navigationBar,
 	navigationBarActive,
 	tech,

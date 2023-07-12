@@ -1,8 +1,13 @@
-const typefaces = {
-	code: "'Space Mono'",
+interface ITypefaces {
+	[key: string]: string
+}
+
+const typefaces: ITypefaces = {
+	code: "'Space Mono', monospace",
 	articleHeader: "'Space Grotesk', sans-serif",
 	navigationBar: "'Space Grotesk', sans-serif",
-	tech: "'OCR', sans-serif",
+	header: "'Space Grotesk', sans-serif",
+	tech: "'OCR', monospace",
 	paragraph: "'Charter', serif",
 }
 

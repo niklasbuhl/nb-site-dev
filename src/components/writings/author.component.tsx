@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Link } from "gatsby"
 import typefaces from "../../styles/typefaces"
-import { styled } from "styled-components"
+import { RuleSet, styled } from "styled-components"
 import typographies from "../../styles/typographies"
 import LayoutContext from "../../contexts/layout.context"
 
@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
 
 const AuthorSpan = styled.span<{ gutter: string }>`
 	font-size: 0.8rem;
-	${typographies.code}
+	${typographies.code as RuleSet}
 	margin: ${(p) => p.gutter};
 	margin-top: 0;
 `

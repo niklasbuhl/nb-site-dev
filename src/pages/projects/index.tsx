@@ -2,7 +2,7 @@ import React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import PageLayout from "../../layouts/pageLayout.component"
 import PageSection from "../../components/pageSection/pageSection.component"
-import ProjectsIndex from "../../components/projectsIndex/projectsIndex.component"
+import ProjectsIndex from "../../components/projects/projectsIndex/projectsIndex.component"
 
 const ProjectsPage: React.FC<PageProps> = (PageProps) => {
 	return (

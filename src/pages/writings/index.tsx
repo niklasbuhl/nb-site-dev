@@ -2,7 +2,7 @@ import React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import PageLayout from "../../layouts/pageLayout.component"
 import PageSection from "../../components/pageSection/pageSection.component"
-import WritingsIndex from "../../components/writingsIndex/writingIndex.components"
+import WritingsIndex from "../../components/writings/writingsIndex/writingIndex.components"
 
 const WritingsPage: React.FC<PageProps> = (PageProps) => {
 	return (
