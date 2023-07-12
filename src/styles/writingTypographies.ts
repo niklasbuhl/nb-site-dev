@@ -28,27 +28,44 @@ export const writingTypographies = css`
 		font-size: 1.8rem;
 	}
 
-	h2, h3, h4, h5, h6, p, pre {
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: 48px;
+	}
+
+	p,
+	pre,
+	code {
 		margin: 16px;
 		margin-top: 0;
-	}
-
-	p {
-		font-family: ${typefaces.paragraph}
 		font-size: 1rem;
-
 	}
 
-	code, pre {
+	p,
+	ul,
+	li {
+		font-family: ${typefaces.paragraph};
+	}
+
+	code,
+	pre {
 		font-family: ${typefaces.code};
 		letter-spacing: -1px;
-		font-size: 1rem;
 	}
 
 	// https://www.w3schools.com/tags/tag_pre.asp
 	pre {
 		background: lightgray;
 		padding: 4px;
+	}
+
+	li {
+		margin-left: 16px;
+		margin-right: 16px;
+		margin-bottom: 4px;
 	}
 `
 

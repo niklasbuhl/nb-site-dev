@@ -8,6 +8,8 @@ import LayoutContext from "../../contexts/layout.context"
 const StyledLink = styled(Link)`
 	font-family: ${typefaces.code};
 	font-size: 0.8rem;
+	color: black;
+	// text-decoration: none;
 `
 
 const AuthorSpan = styled.span<{ gutter: string }>`

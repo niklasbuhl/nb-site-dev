@@ -1,11 +1,13 @@
 import React, { useContext } from "react"
 import { styled } from "styled-components"
 import LayoutContext from "../../contexts/layout.context"
+import typefaces from "../../styles/typefaces"
 
-const TldrP = styled.p<{ gutter: string }>`
+const TldrP = styled.div<{ gutter: string }>`
 	font-size: 1.2rem;
 	margin: ${(p) => p.gutter};
-	margin-top: 0;
+	margin-top: 12px;
+	font-family: ${typefaces.articleHeader};
 `
 
 interface ITldr {

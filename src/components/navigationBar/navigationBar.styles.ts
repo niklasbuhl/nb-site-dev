@@ -18,6 +18,7 @@ export const Nav = styled.nav<INav>`
 	overflow: hidden;
 	animation-timing-function: ease-in;
 	transition: transform 0.2s, height 0.3s ease;
+	background: white;
 	${(props) => (props.hidden ? `transform: translateY(-96px);` : "")}
 	${(props) => (props.$showMobileMenu ? "background: white;" : "")}
 `

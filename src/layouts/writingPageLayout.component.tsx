@@ -10,24 +10,9 @@ import Author from "../components/writings/author.component"
 import DateAgo from "../components/writings/dateAgo.component"
 import Version from "../components/writings/version.component"
 import Tldr from "../components/writings/tldr.component"
+import WritingsHeader from "../components/writings/header.component"
 
 const shortcodes = { Link } // Provide common components here
-
-const Info = styled.div`
-	display: flex;
-	flex-direction: row;
-`
-
-const WritingsHeader = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 48px;
-`
-
-const WritingsBackLink = styled(Link)`
-	text-decoration: none;
-	margin: 16px;
-`
 
 interface IArticleLayout {
 	data: any // TODO
@@ -35,7 +20,7 @@ interface IArticleLayout {
 	// PageProps: PageProps
 }
 
-const ArticleLayout: React.FC<IArticleLayout> = ({
+const WritingLayout: React.FC<IArticleLayout> = ({
 	data,
 	children,
 	// PageProps,
@@ -46,25 +31,21 @@ const ArticleLayout: React.FC<IArticleLayout> = ({
 	return (
 		<PageLayout PageProps={props as PageProps}>
 			<PageSection typography={typographyStyle.writing as RuleSet}>
-				<WritingsBackLink to="/writings">
-					Back to <code>/writings</code>
-				</WritingsBackLink>
-				<WritingsHeader>
-					<h1>{data.mdx.frontmatter.title}</h1>
-					<Info>
-						<Author author={data.mdx.frontmatter.author} to="/about" />
-						<DateAgo date={data.mdx.frontmatter.date} />
-						<Version version={data.mdx.frontmatter.version} />
-					</Info>
-					<Tldr tldr={data.mdx.frontmatter.tldr} />
-				</WritingsHeader>
+				<WritingsHeader
+					title={data.mdx.frontmatter.title}
+					author={data.mdx.frontmatter.author}
+					authorLink="/about"
+					date={data.mdx.frontmatter.date}
+					version={data.mdx.frontmatter.version}
+					tldr={data.mdx.frontmatter.tldr}
+				/>
 				<MDXProvider components={shortcodes}>{children}</MDXProvider>
 			</PageSection>
 		</PageLayout>
 	)
 }
 
-export default ArticleLayout
+export default WritingLayout
 
 export const query = graphql`
 	query ($id: String!) {

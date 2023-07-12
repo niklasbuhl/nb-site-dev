@@ -114,7 +114,7 @@ const config: GatsbyConfig = {
 							urls: {
 								woff: `./src/typefaces/spaceMono/SpaceMono-Regular.woff`,
 							},
-							fontStyle: "regular",
+							fontStyle: "normal",
 							fontWeight: 400,
 						},
 						{
@@ -130,7 +130,7 @@ const config: GatsbyConfig = {
 							urls: {
 								woff: `./src/typefaces/spaceMono/SpaceMono-Bold.woff`,
 							},
-							fontStyle: "bold",
+							fontStyle: "normal",
 							fontWeight: 700,
 						},
 						{
@@ -138,7 +138,40 @@ const config: GatsbyConfig = {
 							urls: {
 								woff: `./src/typefaces/spaceMono/SpaceMono-BoldItalic.woff`,
 							},
-							fontStyle: "bold italic",
+							fontStyle: "italic",
+							fontWeight: 700,
+						},
+						// Charter
+						{
+							family: "Charter",
+							urls: {
+								woff: `./src/typefaces/charter/charter_regular-webfont.woff`,
+							},
+							fontStyle: "normal",
+							fontWeight: 400,
+						},
+						{
+							family: "Charter",
+							urls: {
+								woff: `./src/typefaces/charter/charter_italic-webfont.woff`,
+							},
+							fontStyle: "italic",
+							fontWeight: 400,
+						},
+						{
+							family: "Charter",
+							urls: {
+								woff: `./src/typefaces/charter/charter_bold-webfont.woff`,
+							},
+							fontStyle: "normal",
+							fontWeight: 700,
+						},
+						{
+							family: "Charter",
+							urls: {
+								woff: `./src/typefaces/charter/charter_bold_italic-webfont.woff`,
+							},
+							fontStyle: "italic",
 							fontWeight: 700,
 						},
 					],
