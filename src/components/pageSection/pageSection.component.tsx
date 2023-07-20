@@ -3,7 +3,7 @@ import LayoutContext from "../../contexts/layout.context"
 import PositionWrapper from "../wrappers/position/positionWrapper.component"
 import ContentWrapper from "../wrappers/content/contentWrapper.component"
 import { RuleSet } from "styled-components"
-import BackgroundWrapper from "../wrappers/background/BackgroundWrapper.component"
+import BackgroundWrapper from "../wrappers/background/backgroundWrapper.component"
 import Color from "color"
 
 interface IPageSection {
