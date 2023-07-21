@@ -9,12 +9,8 @@ import { Link } from "gatsby"
 
 const HeroHeader: React.FC = () => {
 	const { layout } = useContext(LayoutContext)
-	const { view, location, mouse } = useContext(EventContext)
+	const { view, location, mouse, touch } = useContext(EventContext)
 	const { color } = useContext(ThemeContext)
-
-	// const [encrypedEmail, setEncryptedEmail] = useState<string>(
-	// 	"4UTTN@kAtTXHv04T.qNQ"
-	// )
 
 	const [encrypedEmail, setEncryptedEmail] = useState<string>(
 		"9Laze7:jRzz7@dawzLD0Ojz.g79"
@@ -55,7 +51,7 @@ const HeroHeader: React.FC = () => {
 			const count: number = mouseMovementCount + 1
 			setMouseMovementCount(count)
 		}
-	}, [mouse.position])
+	}, [mouse.position, touch.touches])
 
 	//
 
@@ -165,6 +161,10 @@ const HeroHeader: React.FC = () => {
 			</p>
 			<p>
 				Website: <Link to="/">niklasbuhl.com</Link>
+			</p>
+			<p>
+				{touch.touches[0] ? touch.touches[0].clientX : null},{" "}
+				{touch.touches[0] ? touch.touches[0].clientY : null}
 			</p>
 		</PageSection>
 	)

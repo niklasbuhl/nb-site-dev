@@ -22,6 +22,10 @@ interface IEventContext {
 			y: number
 		}
 	}
+	touch: {
+		touches: Touch[]
+		lastTouches: Touch[]
+	}
 	location: WindowLocation | undefined
 	setLocation: React.Dispatch<React.SetStateAction<WindowLocation | undefined>>
 }
@@ -41,6 +45,10 @@ const eventDefaultState = {
 			y: 0,
 		},
 	},
+	touch: {
+		touches: [] as Touch[],
+		lastTouches: [] as Touch[],
+	},
 	location: undefined,
 	setLocation: () => {},
 }
@@ -56,6 +64,7 @@ export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 	const [mouse, setMouse] = useState(eventDefaultState.mouse)
 	const [lastScrollPosition, setLastScrollPosition] = useState<number>(0)
 	const [location, setLocation] = useState<WindowLocation>()
+	const [touch, setTouch] = useState(eventDefaultState.touch)
 
 	const handleMousePosition = (event: MouseEvent) => {
 		let mouseX = event.clientX
@@ -67,6 +76,32 @@ export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 				x: mouseX,
 			},
 		})
+	}
+
+	const handleTouchStart = (event: TouchEvent) => {
+		// handleLastTouchPosition(event)
+		const newTouches = Array.from(event.touches)
+		setTouch((prevState) => ({ ...prevState, touches: newTouches }))
+	}
+
+	const handleTouchMove = (event: TouchEvent) => {
+		const newTouches = Array.from(event.touches)
+		setTouch((prevState) => ({ ...prevState, touches: newTouches }))
+	}
+
+	const handleTouchEnd = (event: TouchEvent) => {
+		const newTouches = Array.from(event.touches)
+		setTouch((prevState) => ({ ...prevState, lastTouches: newTouches }))
+	}
+
+	const handleLastTouchPosition = (event: TouchEvent) => {
+		let touchX = event.touches[0].clientX
+		let touchY = event.touches[0].clientY
+
+		setTouch((prevState) => ({
+			...prevState,
+			lastTouchPosition: { x: touchX, y: touchY },
+		}))
 	}
 
 	const handleScroll = () => {
@@ -131,6 +166,11 @@ export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 			window.addEventListener("resize", handleResize)
 			window.addEventListener("scroll", handleScroll)
 			window.addEventListener("mousemove", handleMousePosition)
+			// Touch
+			// https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html#//apple_ref/doc/uid/TP40006511-SW22
+			window.addEventListener("touchstart", handleTouchStart)
+			window.addEventListener("touchmove", handleTouchMove)
+			window.addEventListener("touchend", handleTouchEnd)
 		} catch (error) {
 			console.log(error)
 		}
@@ -139,6 +179,7 @@ export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 				window.removeEventListener("resize", handleResize)
 				window.removeEventListener("scroll", handleScroll)
 				window.removeEventListener("mousemove", handleMousePosition)
+				window.removeEventListener("touchstart", handleTouchStart)
 			} catch (error) {
 				console.log(error)
 			}
@@ -150,6 +191,7 @@ export const EventProvider: React.FC<IEventProvider> = ({ children }) => {
 			value={{
 				view,
 				mouse,
+				touch,
 				location,
 				setLocation,
 			}}
