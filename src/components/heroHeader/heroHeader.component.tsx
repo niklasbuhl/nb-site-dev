@@ -155,16 +155,12 @@ const HeroHeader: React.FC = () => {
 				{encrypedEmail.length || encryptedPhone.length ? (
 					<span style={{ color: colors.neonLime.hsl().string() }}>
 						{" "}
-						(Move mouse to decrypt)
+						(Move mouse or touch and drag to decrypt)
 					</span>
 				) : null}
 			</p>
 			<p>
 				Website: <Link to="/">niklasbuhl.com</Link>
-			</p>
-			<p>
-				{touch.touches[0] ? touch.touches[0].clientX : null},{" "}
-				{touch.touches[0] ? touch.touches[0].clientY : null}
 			</p>
 		</PageSection>
 	)
